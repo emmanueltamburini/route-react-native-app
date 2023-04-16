@@ -1,8 +1,8 @@
-# ComponentsApp
+# RouteApp
 
-## ComponentsApp README
+## RouteApp README
 
-This application has designed to create a basic configuration app to start any project from this app. It has a stack navigator, Icons, ThemeContext and some useful components and hooks.
+This application has designed to work with maps in android and ios, it also works with permissions in both platform.
 
 ### Getting started
 
