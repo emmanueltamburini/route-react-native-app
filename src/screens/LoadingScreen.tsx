@@ -2,12 +2,12 @@ import React from 'react';
 import {StyleSheet, SafeAreaView} from 'react-native';
 import {ThemeText} from '../components/ThemeText';
 
-export const TestScreen = () => {
+export const LoadingScreen = () => {
   const styles = stylesFunction();
 
   return (
     <SafeAreaView style={styles.container}>
-      <ThemeText>TestScreen</ThemeText>
+      <ThemeText>LoadingScreen</ThemeText>
     </SafeAreaView>
   );
 };
