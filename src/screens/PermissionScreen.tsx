@@ -18,7 +18,9 @@ export const PermissionScreen = () => {
         onPress={askLocationPermission}
         ignoreTheme
       />
-      <ThemeText style={styles.jsonText}>{JSON.stringify(permissions, null, 5)}</ThemeText>
+      <ThemeText style={styles.jsonText}>
+        {JSON.stringify(permissions, null, 5)}
+      </ThemeText>
     </SafeAreaView>
   );
 };
