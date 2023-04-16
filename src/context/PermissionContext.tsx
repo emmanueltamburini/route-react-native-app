@@ -70,7 +70,6 @@ export const PermissionProvider = ({children}: Props) => {
     }
 
     if (permissionStatus === 'blocked') {
-      console.log('=== PermissionContext.tsx [73] ===');
       openSettings();
     }
 
