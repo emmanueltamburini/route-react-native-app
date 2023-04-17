@@ -1,13 +1,21 @@
 import React from 'react';
 import {StyleSheet, SafeAreaView} from 'react-native';
-import {ThemeText} from '../components/ThemeText';
+import MapView from 'react-native-maps';
 
 export const MapScreen = () => {
   const styles = stylesFunction();
 
   return (
     <SafeAreaView style={styles.container}>
-      <ThemeText>MapScreen</ThemeText>
+      <MapView
+        style={styles.container}
+        initialRegion={{
+          latitude: 37.78825,
+          longitude: -122.4324,
+          latitudeDelta: 0.0922,
+          longitudeDelta: 0.0421,
+        }}
+      />
     </SafeAreaView>
   );
 };
