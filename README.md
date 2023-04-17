@@ -14,6 +14,8 @@ And finally you can run `npm run android` or `npm run ios` to compile the app in
 
 You also must configure, for android, the value of GOOGLE_MAPS_API_KEY in the file android/gradle.properties with a google maps api key you can generate one [here](https://console.cloud.google.com/google/maps-apis/credentials)
 
+You also must configure, for IOS, the value of GOOGLE_MAPS_API_KEY in the file android/gradle.properties with a google maps api key you can generate one [here](https://console.cloud.google.com/google/maps-apis/credentials). Notice if you want to use IOS maps this step is not necessary
+
 This project use the following dependencies:
 
 - [React Navigation - Getting started](<https://reactnavigation.org/docs/getting-started/>)
