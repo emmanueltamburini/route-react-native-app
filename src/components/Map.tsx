@@ -3,6 +3,7 @@ import {View, StyleSheet} from 'react-native';
 import MapView from 'react-native-maps';
 import {useLocation} from '../hooks/useLocation';
 import {LoadingScreen} from '../screens/LoadingScreen';
+import {Fab} from './Fab';
 
 export const Map = () => {
   const {hasLocation, initialPosition} = useLocation();
@@ -23,6 +24,11 @@ export const Map = () => {
         showsUserLocation
         style={styles.container}
       />
+      <Fab
+        iconName="star-outline"
+        onPress={() => console.log('tap')}
+        style={styles.fabButton}
+      />
     </View>
   );
 };
@@ -30,5 +36,10 @@ export const Map = () => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+  },
+  fabButton: {
+    position: 'absolute',
+    bottom: 20,
+    right: 20,
   },
 });
