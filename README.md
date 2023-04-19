@@ -2,7 +2,7 @@
 
 ## RouteApp README
 
-This application has designed to work with maps in android and ios, it also works with permissions in both platform.
+This application has designed to work with maps in android and ios with google map and apple maps, it also works with permissions in both platform.
 
 ### Getting started
 
