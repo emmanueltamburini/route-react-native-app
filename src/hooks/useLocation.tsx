@@ -4,6 +4,8 @@ import {Location} from '../interfaces/appInterfaces';
 
 export const useLocation = () => {
   const watchId = useRef<number>();
+  const isMounted = useRef<boolean>(true);
+
   const [hasLocation, setHasLocation] = useState<boolean>(false);
   const [initialPosition, setInitialPosition] = useState<Location>({
     latitude: 0,
@@ -16,7 +18,19 @@ export const useLocation = () => {
   const [routeLines, setRouteLines] = useState<Location[]>([]);
 
   useEffect(() => {
+    isMounted.current = true;
+
+    return () => {
+      isMounted.current = false;
+    };
+  }, []);
+
+  useEffect(() => {
     getCurrentLocation().then(location => {
+      if (!isMounted.current) {
+        return;
+      }
+
       setInitialPosition(location);
       setRouteLines(routes => [...routes, location]);
       setHasLocation(true);
@@ -51,6 +65,9 @@ export const useLocation = () => {
           latitude: coords.latitude,
           longitude: coords.longitude,
         };
+        if (!isMounted.current) {
+          return;
+        }
         setUserLocation(location);
         setRouteLines(routes => [...routes, location]);
       },

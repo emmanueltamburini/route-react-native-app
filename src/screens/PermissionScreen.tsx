@@ -16,7 +16,7 @@ export const PermissionScreen = () => {
       <ThemeButton
         title="Permission"
         onPress={askLocationPermission}
-        ignoreTheme
+        useContrastColor
       />
       <ThemeText style={styles.jsonText}>
         {JSON.stringify(permissions, null, 5)}
