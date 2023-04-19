@@ -1,6 +1,6 @@
 import React, {useEffect, useRef} from 'react';
 import {View, StyleSheet} from 'react-native';
-import MapView from 'react-native-maps';
+import MapView, {Polyline} from 'react-native-maps';
 import {useLocation} from '../hooks/useLocation';
 import {LoadingScreen} from '../screens/LoadingScreen';
 import {Fab} from './Fab';
@@ -10,6 +10,7 @@ export const Map = () => {
     hasLocation,
     initialPosition,
     userLocation,
+    routeLines,
     getCurrentLocation,
     followUserLocation,
     stopFollowUserLocation,
@@ -61,8 +62,13 @@ export const Map = () => {
         onTouchStart={() => (isFollowing.current = false)}
         ref={ref => (ref ? (mapViewRef.current = ref) : null)}
         showsUserLocation
-        style={styles.container}
-      />
+        style={styles.container}>
+        <Polyline
+          coordinates={routeLines}
+          strokeColor="black"
+          strokeWidth={3}
+        />
+      </MapView>
       <Fab
         iconName="compass-outline"
         onPress={() => centerPosition()}

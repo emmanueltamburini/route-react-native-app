@@ -13,10 +13,12 @@ export const useLocation = () => {
     latitude: 0,
     longitude: 0,
   });
+  const [routeLines, setRouteLines] = useState<Location[]>([]);
 
   useEffect(() => {
     getCurrentLocation().then(location => {
       setInitialPosition(location);
+      setRouteLines(routes => [...routes, location]);
       setHasLocation(true);
     });
   }, []);
@@ -45,10 +47,12 @@ export const useLocation = () => {
   const followUserLocation = () => {
     watchId.current = Geolocation.watchPosition(
       ({coords}) => {
-        setUserLocation({
+        const location: Location = {
           latitude: coords.latitude,
           longitude: coords.longitude,
-        });
+        };
+        setUserLocation(location);
+        setRouteLines(routes => [...routes, location]);
       },
       err => {
         console.log(err);
@@ -67,6 +71,7 @@ export const useLocation = () => {
     hasLocation,
     initialPosition,
     userLocation,
+    routeLines,
     getCurrentLocation,
     followUserLocation,
     stopFollowUserLocation,
