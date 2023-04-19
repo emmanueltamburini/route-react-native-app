@@ -1,4 +1,4 @@
-import React, {useEffect, useRef} from 'react';
+import React, {useEffect, useRef, useState} from 'react';
 import {View, StyleSheet} from 'react-native';
 import MapView, {Polyline} from 'react-native-maps';
 import {useLocation} from '../hooks/useLocation';
@@ -19,6 +19,7 @@ export const Map = () => {
   const mapViewRef = useRef<MapView>();
   const followUserLocationStatic = useRef(followUserLocation);
   const isFollowing = useRef<boolean>(true);
+  const [showPolyline, setShowPolyline] = useState(true);
 
   useEffect(() => {
     followUserLocationStatic.current();
@@ -63,16 +64,23 @@ export const Map = () => {
         ref={ref => (ref ? (mapViewRef.current = ref) : null)}
         showsUserLocation
         style={styles.container}>
-        <Polyline
-          coordinates={routeLines}
-          strokeColor="black"
-          strokeWidth={3}
-        />
+        {showPolyline && (
+          <Polyline
+            coordinates={routeLines}
+            strokeColor="black"
+            strokeWidth={3}
+          />
+        )}
       </MapView>
       <Fab
         iconName="compass-outline"
         onPress={() => centerPosition()}
-        style={styles.fabButton}
+        style={styles.centerButton}
+      />
+      <Fab
+        iconName="brush-outline"
+        onPress={() => setShowPolyline(value => !value)}
+        style={styles.polylineButton}
       />
     </View>
   );
@@ -82,9 +90,14 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
   },
-  fabButton: {
+  centerButton: {
     position: 'absolute',
     bottom: 20,
+    right: 20,
+  },
+  polylineButton: {
+    position: 'absolute',
+    bottom: 80,
     right: 20,
   },
 });
