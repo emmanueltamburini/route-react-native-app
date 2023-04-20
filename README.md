@@ -24,3 +24,4 @@ This project use the following dependencies:
 - [React Native Permissions](<https://www.npmjs.com/package/react-native-permissions>)
 - [React Native Maps](<https://github.com/react-native-maps/react-native-maps>)
 - [React Native Maps - Install](<https://github.com/react-native-maps/react-native-maps/blob/master/docs/installation.md>)
+- [React Native Geolocation - Install](<https://github.com/michalchudziak/react-native-geolocation>)
